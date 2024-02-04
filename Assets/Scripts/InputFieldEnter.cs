@@ -12,12 +12,12 @@ public class InputFieldEnter: MonoBehaviour
         var inputText = field.text;
         try
         {
-            YouTubeDownload.DownloadFile(inputText, ".");
+            YouTubeDownload.DownloadFile(inputText, "Assets/Downloaded/Video/Video.mp4", "Assets/Downloaded/Audio/Audio.mp3");
             Debug.Log("Successfully downloaded file somewhere");
         }
         catch (System.Exception e)
         {
-            Debug.Log($"Error doing download: {e}");
+            Debug.Log($"Error downloading: {e}");
         }
     }
 }

@@ -9,14 +9,15 @@ namespace WaveTrails.Utilities
     {
         private static readonly VideoLibrary.YouTube youtube = VideoLibrary.YouTube.Default;
 
-        public static void DownloadFile(string url, string destination)
+        public static void DownloadFile(string url, string videoDestination, string audioDestination)
         {
             // Download the video
             var video = youtube.GetVideo(url);
-            var fullDest = Path.Combine(destination, video.FullName);
+            //var vidDest = Path.Combine(videoDestination, video.FullName);
+            //var audDest = Path.Combine(audioDestination, video.FullName);
 
             // Write video to an MP4
-            File.WriteAllBytes(fullDest, video.GetBytes());
+            File.WriteAllBytes(videoDestination, video.GetBytes());
 
             // Using FFmpeg, convert MP4 to MP3
             var ffmpeg = new Process();
@@ -24,9 +25,9 @@ namespace WaveTrails.Utilities
             Console.WriteLine($"Looking for ffmpeg at {ffmpegPath}");
             ffmpeg.StartInfo.FileName = ffmpegPath;
 
-            var mp3Path = $"{Path.GetDirectoryName(fullDest)}\\{Path.GetFileNameWithoutExtension(fullDest)}.mp3";
+            //var mp3Path = $"{Path.GetDirectoryName(fullDest)}\\{Path.GetFileNameWithoutExtension(fullDest)}.mp3";
 
-            ffmpeg.StartInfo.Arguments = $"-y -i \"{fullDest}\" \"{mp3Path}\"";
+            ffmpeg.StartInfo.Arguments = $"-y -i \"{videoDestination}\" \"{audioDestination}\"";
 
             ffmpeg.Start();
             ffmpeg.WaitForExit();
