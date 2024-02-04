@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "name": "Scripts",
     "rootNamespace": "",
     "references": [
@@ -19,3 +20,7 @@
 	"name": "Scripts"
 }
 >>>>>>> 7356f01 (added download)
+=======
+	"name": "Scripts"
+}
+>>>>>>> 3a33f917e8e8c73a5051c520bf8bc20873b00f70
